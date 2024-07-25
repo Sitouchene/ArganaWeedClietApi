@@ -8,6 +8,7 @@ namespace ArganaWeedClietApi
 {
     public class BaseRequest
     {
+        public string Token { get; set; }
         public BaseRequest()
         {
         }

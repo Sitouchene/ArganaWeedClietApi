@@ -8,5 +8,6 @@ namespace ArganaWeedClietApi
 {
     public class LoginResponse:BaseResponse
     {
+                 
     }
 }

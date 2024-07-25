@@ -24,7 +24,7 @@ namespace ArganaWeedClietApi
             this.target = target;
         }
 
-        public async Task<E> Receive()
+        public async Task<E> ReceivePost()
         {
             E res = null;
 
@@ -32,9 +32,9 @@ namespace ArganaWeedClietApi
             {
                 string raw = ServiceSerializer<T>.Serialize(request);
 
-                Session sess = new Session();
+                HttpService service = new HttpService();
 
-                string result = await sess.TransmitPostJsonAsync(target, raw);
+                string result = await service.PostAsync(target, raw);
 
                 res = ServiceSerializer<E>.Deserialize(result);
             }
@@ -54,11 +54,9 @@ namespace ArganaWeedClietApi
 
             try
             {
-                string raw = ServiceSerializer<T>.Serialize(request);
+                HttpService service = new HttpService();
 
-                Session sess = new Session();
-
-                string result = await sess.TransmitGetJsonAsync(target);
+                string result = await service.GetAsync(target);
 
                 res = ServiceSerializer<E>.Deserialize(result);
             }
